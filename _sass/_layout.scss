@@ -36,22 +36,35 @@ header {
     }
   }
 
+  /* Around line 40 in _sass/_layout.scss */
   nav {
     display: flex;
-    gap: 1.5rem;
+    flex-wrap: wrap;       // Allows links to wrap to the next line
+    gap: 1rem 1.5rem;      // Vertical and horizontal spacing
     font-weight: 400;
-    padding: 2rem 0;
+    padding: 1.5rem 0;     // Slightly reduced padding
     font-size: 1.25rem;
 
     background-color: $nav-bg-color;
     box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.25);
+
+    // Ensure links don't get squashed
     a {
+      white-space: nowrap; 
       color: $nav-link-color;
       &:hover { color: $nav-link-color; }
       &.current {
         font-weight: 700;
         text-decoration: underline;
       }
+    }
+
+    // Media query for smaller screens
+    @media (max-width: 600px) {
+      justify-content: center; // Centers the links when they stack
+      padding: 1rem 0;
+      gap: 0.8rem 1.2rem;
+      font-size: 1.1rem;      // Slightly smaller font on mobile
     }
   }
 }
