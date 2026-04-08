@@ -1,5 +1,6 @@
 ---
 layout: project
+project_id: carbon
 title: Computing's Carbon Footprint
 subtitle: including embodied carbon due to physical manufacturing, and operational carbon from day-to-day use.
 status: Active
@@ -12,6 +13,8 @@ people:
   - David Kong
   - Jalil Morris
   - Georgios Kyriazidis
+sponsors:
+  - "NSF CAREER CO2"
 ---
 
 Description

@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<div class="funding-page">
+    <p>{{ content }}</p>
+    <div class="funding-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+    {% for source in site.funding %}
+        <article class="funding-item" style="border: 1px solid #eee; padding: 1.5rem; border-radius: 8px;">
+        {% if source.logo %}
+            <!-- Logo placeholder/image -->
+        {% endif %}
+        <h2><a href="{{ source.url }}">{{ source.title }}</a></h2>
+        <p><strong>{{ source.full_name }}</strong></p>
+        <div class="funding-description" style="font-size: 0.9rem; color: #666;">
+            {{ source.content | strip_html | truncatewords: 25 }}
+        </div>
+        {% if source.website %}
+            <p><a href="{{ source.website }}" target="_blank">Visit Website →</a></p>
+        {% endif %}
+        </article>
+    {% endfor %}
+    </div>
+</div>

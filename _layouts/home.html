@@ -3,31 +3,7 @@ layout: default
 ---
 
 <div class="home">
-    <section class="banner">
-        <h1>Harvard Nano-Design Research Group</h1>
-    </section>
-
     <div class="content">
         {{ content }}
     </div>
-
-    {% assign highlighted_projects = site.projects | where: "frontpage_highlight", true %}
-    <section class="recent-projects">
-        <h2>Research Highlights</h2>
-        <ul>
-            {% for project in highlighted_projects %}
-                <li><a href="{{ project.url }}">{{ project.title }}</a></li>
-            {% endfor %}
-        </ul>
-    </section>
-
-    <section class="featured-people">
-        <h2>People</h2>
-        <ul>
-            {% for person in site.people limit:3 %}
-                <li><a href="{{ person.url }}">{{ person.name }}</a></li>
-            {% endfor %}
-            <li><a href="{{ '/people' | relative_url }}">See all members...</a></li>
-        </ul>
-    </section>
 </div>

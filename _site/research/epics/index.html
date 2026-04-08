@@ -7,23 +7,31 @@
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
-    <div class="main-container">
-        <header>
+    <header>
+        <div class="header-content">
+            <h1><a href="/">Harvard Nano-Design Research Group</a></h1>
+           
             <nav>
-                <a href="/">Home</a>
-                <a href="/people">People</a>
-                <a href="/research">Research</a>
-                <a href="/publications">Publications</a>
-                <a href="/contact">Contact</a>
+                <a href="/" >Home</a>
+                <a href="/people" >People</a>
+                <a href="/research" class="current">Research</a>
+                <a href="/publications" >Publications</a>
+                <a href="/funding" >Funding</a>
+                <a href="/contact" >Contact</a>
             </nav>
-        </header>
+        </div>
+    </header>
+    <div class="main-container">
+        
 
         <main>
             <div class="project-page">
-    <header class="project-header">
+    <div class="project-header">
         <h1>Electronic-Photonic Integrated Circuits</h1>
         <p class="project-status"><strong>Status:</strong> Active</p>
-    </header>
+        
+        
+    </div>
 
     <!-- Loop through all parent projects -->
     
@@ -32,27 +40,6 @@
         <p>Description</p>
 
     </div>
-
-    <!-- For "Umbrella" projects: List children that claim this project as a parent -->
-    
-        <section class="sub-projects">
-            <hr>
-            <h3>Related Sub-Projects</h3>
-            <ul>
-                
-                    
-                
-                    
-                        <li><a href="/research/digital-optical-converters/">Digital-to-Optical Converters (DOCs)</a></li>
-                    
-                
-                    
-                
-                    
-                
-            </ul>
-        </section>
-    
 
     <aside class="project-meta">
         <hr>
@@ -97,7 +84,52 @@
                 
             </ul>
         
-    </aside>
+    </aside>    
+
+    <!-- Related Publications -->
+    
+    
+    <section class="related-publications" style="margin-top: 2rem; border-top: 1px solid #ddd; padding-top: 1rem;">
+        <h3>Related Publications</h3>
+        <div class="publications-list">
+            
+            <article class="publication-entry" style="margin-bottom: 1.5rem;">
+                <h4 style="margin-bottom: 0.3rem;">Example Publication</h4>
+                <p style="margin: 0; font-size: 0.9rem; color: #555;">John Davis, External Collaborator, Gage Hills</p>
+                <p style="margin: 0; font-size: 0.9rem; font-style: italic;">Example Conference (2026)</p>
+                <div style="margin-top: 0.3rem; font-size: 0.85rem;">
+                    
+                        <a href="https://ieeexplore.ieee.org" target="_blank">View Paper</a> |
+                    
+                    <a href="/publications/2026-example/">View Details</a>
+                </div>
+            </article>
+            
+        </div>
+    </section>
+    
+
+    <!-- For "Umbrella" projects: List children that claim this project as a parent -->
+    
+    <section class="sub-projects">
+        <h3>Related Sub-Projects</h3>
+        <ul>
+            
+                
+            
+                
+                    <li><a href="/research/digital-optical-converters/">Digital-to-Optical Converters (DOCs)</a></li>
+                
+            
+                
+            
+                
+            
+        </ul>
+    </section>
+    
+
+   
 </div>
 
         </main>

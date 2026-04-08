@@ -14,12 +14,33 @@ header {
   padding: 0rem 0;
   margin-bottom: 1rem;
   
+  background-color: $header-bg-color;
+
+  .header-content {
+    max-width: $max-width; // Use your variable
+    margin: 0 auto;       // Centers the content
+    padding: 0 $padding;  // Adds side spacing
+  }
+
+
+  h1{
+    padding: 1rem 0;
+    color: $header-title-color;
+    margin: 0;
+    a{
+        color: $header-title-color;
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+  }
 
   nav {
     display: flex;
     gap: 1.5rem;
     font-weight: 400;
-    padding: 2rem;
+    padding: 2rem 0;
     font-size: 1.25rem;
 
     background-color: $nav-bg-color;
@@ -27,6 +48,10 @@ header {
     a {
       color: $nav-link-color;
       &:hover { color: $nav-link-color; }
+      &.current {
+        font-weight: 700;
+        text-decoration: underline;
+      }
     }
   }
 }

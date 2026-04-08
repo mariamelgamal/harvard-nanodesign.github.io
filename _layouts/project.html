@@ -3,21 +3,35 @@ layout: default
 ---
 
 <div class="project-page">
-    <header class="project-header">
+    <div class="project-header">
         <h1>{{ page.title }}</h1>
         <p class="project-status"><strong>Status:</strong> {{ page.status | default: "In Progress" }}</p>
-    </header>
+        
+        {% if page.sponsors %}
+            <div class="sponsors" style="margin-top: 1rem;">
+                <strong>Supported by:</strong>
+                {% for sponsor_id in page.sponsors %}
+                    {% assign sponsor = site.funding | where: "funding_id", sponsor_id | first %}
+                    {% if sponsor %}
+                        <a href="{{ sponsor.url | relative_url }}">{{ sponsor.title }}</a>{% unless forloop.last %}, {% endunless %}
+                    {% else %}
+                        {{ sponsor_id }}{% unless forloop.last %}, {% endunless %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
 
     <!-- Loop through all parent projects -->
     {% if page.parent_projects %}
         <p class="parent-links">
             Part of the overarching research:
-            {% for parent_title in page.parent_projects %}
-                {% assign parent = site.projects | where: "title", parent_title | first %}
+            {% for proj_id in page.parent_projects %}
+                {% assign parent = site.projects | where: "project_id", proj_id | first %}
                 {% if parent %}
                     <a href="{{ parent.url }}">{{ parent.title }}</a>{% unless forloop.last %}, {% endunless %}
                 {% else %}
-                    {{ parent_title }}{% unless forloop.last %}, {% endunless %}
+                    {{ proj_id }}{% unless forloop.last %}, {% endunless %}
                 {% endif %}
             {% endfor %}
         </p>
@@ -26,21 +40,6 @@ layout: default
     <div class="project-content">
         {{ content }}
     </div>
-
-    <!-- For "Umbrella" projects: List children that claim this project as a parent -->
-    {% if page.is_umbrella %}
-        <section class="sub-projects">
-            <hr>
-            <h3>Related Sub-Projects</h3>
-            <ul>
-                {% for child in site.projects %}
-                    {% if child.parent_projects contains page.title %}
-                        <li><a href="{{ child.url }}">{{ child.title }}</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        </section>
-    {% endif %}
 
     <aside class="project-meta">
         <hr>
@@ -59,5 +58,44 @@ layout: default
                 {% endfor %}
             </ul>
         {% endif %}
-    </aside>
+    </aside>    
+
+    <!-- Related Publications -->
+    {% assign related_pubs = site.publications | where_exp: "pub", "pub.projects contains page.project_id" | sort: "date" | reverse %}
+    {% if related_pubs.size > 0 %}
+    <section class="related-publications" style="margin-top: 2rem; border-top: 1px solid #ddd; padding-top: 1rem;">
+        <h3>Related Publications</h3>
+        <div class="publications-list">
+            {% for pub in related_pubs %}
+            <article class="publication-entry" style="margin-bottom: 1.5rem;">
+                <h4 style="margin-bottom: 0.3rem;">{{ pub.title }}</h4>
+                <p style="margin: 0; font-size: 0.9rem; color: #555;">{{ pub.authors | join: ", " }}</p>
+                <p style="margin: 0; font-size: 0.9rem; font-style: italic;">{{ pub.venue }} ({{ pub.date | date: "%Y" }})</p>
+                <div style="margin-top: 0.3rem; font-size: 0.85rem;">
+                    {% if pub.link %}
+                        <a href="{{ pub.link }}" target="_blank">View Paper</a> |
+                    {% endif %}
+                    <a href="{{ pub.url | relative_url }}">View Details</a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- For "Umbrella" projects: List children that claim this project as a parent -->
+    {% if page.is_umbrella %}
+    <section class="sub-projects">
+        <h3>Related Sub-Projects</h3>
+        <ul>
+            {% for child in site.projects %}
+                {% if child.parent_projects contains page.project_id %}
+                    <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </section>
+    {% endif %}
+
+   
 </div>

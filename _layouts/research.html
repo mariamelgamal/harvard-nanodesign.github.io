@@ -3,7 +3,6 @@ layout: default
 ---
 
 <div class="research-page">
-    <h1>Our Research</h1>
     <p>{{ content }}</p>
 
     <div class="projects-hierarchy">
@@ -33,10 +32,11 @@ layout: default
             <a href="{{ umbrella.url }}">View Full Research Thrust Details →</a>
             </div>
 
+            
+            {% assign children = site.projects | where: "parent_projects", umbrella.project_id %}
+            {% if children.size > 0 %}
             <div class="sub-projects">
             <h4>Projects within this Thrust</h4>
-            {% assign children = site.projects | where: "parent_projects", umbrella.title %}
-            {% if children.size > 0 %}
                 <ul>
                 {% for child in children %}
                     <li>
@@ -44,10 +44,8 @@ layout: default
                     </li>
                 {% endfor %}
                 </ul>
-            {% else %}
-                <p><em>No sub-projects listed yet.</em></p>
-            {% endif %}
             </div>
+            {% endif %}
         </details>
         {% endfor %}
     {% endif %}

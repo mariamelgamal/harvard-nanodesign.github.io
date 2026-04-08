@@ -7,16 +7,22 @@
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
-    <div class="main-container">
-        <header>
+    <header>
+        <div class="header-content">
+            <h1><a href="/">Harvard Nano-Design Research Group</a></h1>
+           
             <nav>
-                <a href="/">Home</a>
-                <a href="/people">People</a>
-                <a href="/research">Research</a>
-                <a href="/publications">Publications</a>
-                <a href="/contact">Contact</a>
+                <a href="/" >Home</a>
+                <a href="/people" class="current">People</a>
+                <a href="/research" >Research</a>
+                <a href="/publications" >Publications</a>
+                <a href="/funding" >Funding</a>
+                <a href="/contact" >Contact</a>
             </nav>
-        </header>
+        </div>
+    </header>
+    <div class="main-container">
+        
 
         <main>
             <div class="bio-page">
@@ -39,7 +45,71 @@
     <section class="personal-projects">
       
       
+          <h2>Featured Research</h2>
+          <ul>
+              
+                  <li><a href="/research/digital-optical-converters/">Digital-to-Optical Converters (DOCs)</a></li>
+              
+                  <li><a href="/research/epics/">Electronic-Photonic Integrated Circuits</a></li>
+              
+          </ul>
+      
     </section>
+
+    <section class="personal-publications">
+      
+      
+          <h2>Publications</h2>
+          <ul>
+              
+                 <article class="publication-entry" style="margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid #eee;">
+                    <h3 style="margin-bottom: 0.5rem;">Example Publication</h3>
+                    <p class="authors" style="margin: 0; color: #555;">
+                    
+                        
+                        
+                        <a href="/people/john_davis/">John Davis</a>
+                        
+                        , 
+                    
+                        
+                        
+                        External Collaborator
+                        
+                        , 
+                    
+                        
+                        
+                        <a href="/people/gage_hills/">Gage Hills</a>
+                        
+                        
+                    
+                    </p>
+                    <p class="venue" style="margin: 0; font-style: italic;">Example Conference (2026)</p>
+                    
+                    <div class="pub-links" style="margin-top: 0.5rem;">
+                    
+                        <a href="https://ieeexplore.ieee.org" target="_blank" class="btn-pub">Link</a> |
+                    
+                    <button onclick="copyToClipboard('bib-1')" style="cursor: pointer; background: none; border: none; color: #007bff; padding: 0;">Copy BibTeX</button> |
+                    <button onclick="copyToClipboard('cite-1')" style="cursor: pointer; background: none; border: none; color: #007bff; padding: 0;">Copy Citation</button>
+                    </div>
+
+                    <div id="bib-1" style="display:none;">@inproceedings{davis2026example,
+  title={Example Publication},
+  author={Davis, John and Hills, Gage},
+  booktitle={Example Conference},
+  year={2026}
+}
+</div>
+                    <div id="cite-1" style="display:none;">John Davis and Gage Hills, 'Example Publication', Example Conference, 2026.</div>
+                </article>
+              
+          </ul>
+      
+    </section>
+
+    
 </div>
 
         </main>

@@ -1,0 +1,38 @@
+---
+layout: default
+---
+
+<div class="funding-source-page">
+    <h1>{{ page.full_name | default: page.title }}</h1>
+    
+    <div class="funding-meta" style="margin-bottom: 2rem; color: #666;">
+        {% if page.website %}
+            <p><strong>Official Website:</strong> <a href="{{ page.website }}" target="_blank">{{ page.website }}</a></p>
+        {% endif %}
+        {% if page.grant_number %}
+            <p><strong>Grant Number:</strong> {{ page.grant_number }}</p>
+        {% endif %}
+    </div>
+
+    <hr>
+
+    <div class="funding-content">
+        {{ content }}
+    </div>
+
+    {% assign related_projects = site.projects | where_exp: "project", "project.sponsors contains page.title" %}
+    {% if related_projects.size > 0 %}
+        <section class="supported-projects" style="margin-top: 3rem;">
+            <h2>Projects Supported by {{ page.title }}</h2>
+            <ul>
+                {% for project in related_projects %}
+                    <li><a href="{{ project.url }}">{{ project.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </section>
+    {% endif %}
+
+    <div style="margin-top: 2rem;">
+        <a href="{{ '/funding' | relative_url }}">← Back to all funding</a>
+    </div>
+</div>

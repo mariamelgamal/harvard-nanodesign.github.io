@@ -1,5 +1,6 @@
 ---
 layout: project
+project_id: epics
 title: Electronic-Photonic Integrated Circuits
 subtitle: for energy-efficient communication in datacenter-scale distributed computing systems.
 status: Active
