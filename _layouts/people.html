@@ -8,11 +8,12 @@ layout: default
 
     <!-- Principle Investigator -->
     <div class="people-list">
-        {% assign pis = site.people | where: "role", "Principle Investigator" | sort: "name" %}
-         {% if pis.size > 0 %}
+        {% assign pis = site.people | where: "role", "Principle Investigator" %}
+        {% assign sorted_pis = pis | sort: "name" %}
+        {% if sorted_pis.size > 0 %}
             <h2>Principal Investigator</h2>
         {% endif %}
-        {% for person in pis %}
+        {% for person in sorted_pis %}
             <article class="person-card">
               {% if person.image %}
                 <img src="{{ person.image | relative_url }}" alt="{{ person.name }}" height="100px">
@@ -25,11 +26,12 @@ layout: default
 
     <!-- Postdoctoral Researchers -->
     <div class="people-list">
-        {% assign postdocs = site.people | where: "role", "Postdoctoral Researcher" | sort: "name" %}
-        {% if postdocs.size > 0 %}
+        {% assign postdocs = site.people | where: "role", "Postdoctoral Researcher" %}
+        {% assign sorted_postdocs = postdocs | sort: "name" %}
+        {% if sorted_postdocs.size > 0 %}
             <h2>Postdoctoral Researchers</h2>
         {% endif %}
-        {% for person in postdocs %}
+        {% for person in sorted_postdocs %}
             <article class="person-card">
               {% if person.image %}
                 <img src="{{ person.image | relative_url }}" alt="{{ person.name }}" height="100px">
@@ -42,11 +44,12 @@ layout: default
 
     <!-- PhD Students or PhD Candidates -->
     <div class="people-list">
-        {% assign phds = site.people | where_exp: "item", "item.role == 'PhD Student' or item.role == 'PhD Candidate'" | sort: "name" %}
-        {% if phds.size > 0 %}
+        {% assign phds = site.people | where_exp: "item", "item.role == 'PhD Student' or item.role == 'PhD Candidate'" %}
+    {% assign sorted_phds = phds | sort: "name" %}
+    {% if sorted_phds.size > 0 %}
             <h2>Graduate Students</h2>
         {% endif %}
-        {% for person in phds %}
+        {% for person in sorted_phds %}
             <article class="person-card">
               {% if person.image %}
                 <img src="{{ person.image | relative_url }}" alt="{{ person.name }}" height="100px">
@@ -59,11 +62,12 @@ layout: default
 
     <!-- Undergraduate Researchers, sorted by last name -->
     <div class="people-list">
-        {% assign undergrads = site.people | where: "role", "Undergraduate Researcher" | sort: "name" %}
-        {% if undergrads.size > 0 %}
+        {% assign undergrads = site.people | where: "role", "Undergraduate Researcher" %}
+        {% assign sorted_undergrads = undergrads | sort: "name" %}
+        {% if sorted_undergrads.size > 0 %}
             <h2>Undergraduate Researchers</h2>
         {% endif %}
-        {% for person in undergrads %}
+        {% for person in sorted_undergrads %}
             <article class="person-card">
               {% if person.image %}
                 <img src="{{ person.image | relative_url }}" alt="{{ person.name }}" height="100px">
