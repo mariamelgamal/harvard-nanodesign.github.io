@@ -1,3 +1,4 @@
-# Harvard Nano-Design Research Group
-
+---
+layout: home
+---
 Hello, World!

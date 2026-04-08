@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+<div class="bio-page">
+    <div class="bio-header">
+      {% if page.image %}
+        <img src="{{ page.image | relative_url }}" alt="{{ page.name }}" style="max-width: 200px; border-radius: 50%;">
+      {% endif %}
+      <h1>{{ page.name }}</h1>
+      <p class="role"><strong>{{ page.role }}</strong></p>
+    </div>
+
+    <hr>
+
+    <div class="bio-content">
+        {{ content }}
+    </div>
+
+    <section class="personal-projects">
+      {% assign person_projects = site.projects | where: 'author', page.name %}
+      {% if person_projects.size > 0 %}
+          <h2>Featured Research</h2>
+          <ul>
+              {% for project in person_projects %}
+                  <li><a href="{{ project.url }}">{{ project.title }}</a></li>
+              {% endfor %}
+          </ul>
+      {% endif %}
+    </section>
+</div>

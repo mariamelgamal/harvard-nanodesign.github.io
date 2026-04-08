@@ -1,0 +1,8 @@
+title: Harvard Nano-Design Research Group
+collections:
+  people:
+    output: true
+    permalink: /people/:path/
+  projects:
+    output: true
+    permalink: /research/:path/

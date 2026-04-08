@@ -1,0 +1,20 @@
+---
+layout: default
+---
+
+<div class="people-page">
+    <h1>Our Research Group</h1>
+    <p>{{ content }}</p>
+
+    <div class="people-list">
+        {% for person in site.people %}
+            <article class="person-card">
+              {% if person.image %}
+                <img src="{{ person.image | relative_url }}" alt="{{ person.name }}" height="100px">
+              {% endif %}
+              <h3><a href="{{ person.url }}">{{ person.name }}</a></h3>
+              <p><strong>{{ person.role }}</strong></p>
+            </article>
+        {% endfor %}
+    </div>
+</div>

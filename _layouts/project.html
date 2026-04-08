@@ -1,0 +1,63 @@
+---
+layout: default
+---
+
+<div class="project-page">
+    <header class="project-header">
+        <h1>{{ page.title }}</h1>
+        <p class="project-status"><strong>Status:</strong> {{ page.status | default: "In Progress" }}</p>
+    </header>
+
+    <!-- Loop through all parent projects -->
+    {% if page.parent_projects %}
+        <p class="parent-links">
+            Part of the overarching research:
+            {% for parent_title in page.parent_projects %}
+                {% assign parent = site.projects | where: "title", parent_title | first %}
+                {% if parent %}
+                    <a href="{{ parent.url }}">{{ parent.title }}</a>{% unless forloop.last %}, {% endunless %}
+                {% else %}
+                    {{ parent_title }}{% unless forloop.last %}, {% endunless %}
+                {% endif %}
+            {% endfor %}
+        </p>
+    {% endif %}
+
+    <div class="project-content">
+        {{ content }}
+    </div>
+
+    <!-- For "Umbrella" projects: List children that claim this project as a parent -->
+    {% if page.is_umbrella %}
+        <section class="sub-projects">
+            <hr>
+            <h3>Related Sub-Projects</h3>
+            <ul>
+                {% for child in site.projects %}
+                    {% if child.parent_projects contains page.title %}
+                        <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </section>
+    {% endif %}
+
+    <aside class="project-meta">
+        <hr>
+        {% if page.people %}
+            <h3>Research Team</h3>
+            <ul>
+                {% for person_name in page.people %}
+                    {% assign person = site.people | where: "name", person_name | first %}
+                    <li>
+                      {% if person %}
+                        <a href="{{ person.url }}">{{ person.name }}</a>
+                      {% else %}
+                        {{ person_name }}
+                      {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </aside>
+</div>
