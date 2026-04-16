@@ -1,6 +1,6 @@
 ---
 layout: bio
-person_id: mariamelgamal
+person_id: mariam
 name: Mariam Elgamal
 role: Graduate Researcher
 linkedin: https://www.linkedin.com/in/mariamelgamal/
